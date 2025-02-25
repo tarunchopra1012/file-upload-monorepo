@@ -1,0 +1,50 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type CustomerModel {
+  address: String!
+  created_at: DateTime!
+  email: String!
+  id: String!
+  invoices: [InvoiceModel!]
+  name: String!
+  phone: String!
+  updated_at: DateTime!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type InvoiceModel {
+  amountPaid: Float!
+  createdAt: DateTime!
+  currency: String!
+  customer: CustomerModel!
+  description: String!
+  dueDate: String!
+  id: String!
+  invoiceNo: String!
+  issueDate: String!
+  items: [Item!]!
+  note: String!
+  outstandingBalance: Float!
+  paymentStatus: String!
+  subTotal: Float!
+  taxAmount: Float!
+  taxRate: Float!
+  total: String!
+  updatedAt: DateTime!
+}
+
+type Item {
+  description: String!
+  quantity: Float!
+  rate: Float!
+}
+
+type Query {
+  hello: String!
+}

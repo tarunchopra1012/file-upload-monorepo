@@ -11,9 +11,11 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 @Module({
   imports: [
     UploadModule,
-    GraphQLModule.forRoot({
+    GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
-      autoSchemaFile: 'schema.gql',
+      autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
+      sortSchema: true,
+      playground: true,
     }),
     TypeOrmModule.forRoot({
       type: 'postgres',
