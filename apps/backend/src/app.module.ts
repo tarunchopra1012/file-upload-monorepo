@@ -10,6 +10,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { CustomerModule } from './customer/customer.module';
 import DatabaseConfig from './config/database.config';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { CustomerModel } from './customer/customer.model';
+import { InvoiceModel } from './invoice/invoice.model';
+import { InvoiceModule } from './invoice/invoice.module';
 
 @Module({
   imports: [
@@ -36,9 +39,11 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
         database: configService.get<string>('DB_NAME'),
         synchronize: true,
         logging: true,
+        entities: [CustomerModel, InvoiceModel],
       }),
     }),
     CustomerModule,
+    InvoiceModule,
   ],
   controllers: [AppController],
   providers: [AppService, AppResolver],

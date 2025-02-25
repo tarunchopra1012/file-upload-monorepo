@@ -33,7 +33,7 @@ export class Item {
 }
 
 @ObjectType()
-@Entity()
+@Entity('invoices')
 export class InvoiceModel {
   @Field()
   @PrimaryGeneratedColumn('uuid')

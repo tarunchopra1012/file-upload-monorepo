@@ -10,7 +10,7 @@ import {
 import { InvoiceModel } from '../invoice/invoice.model';
 
 @ObjectType()
-@Entity()
+@Entity('customers')
 export class CustomerModel {
   @Field()
   @PrimaryGeneratedColumn('uuid')

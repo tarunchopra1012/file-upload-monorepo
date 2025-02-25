@@ -2,6 +2,19 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+input CreateInvoiceDTO {
+  currency: String!
+  customer: String!
+  description: String!
+  dueDate: DateTime!
+  invoiceNo: String!
+  issueDate: DateTime!
+  items: [ItemDTO!]!
+  note: String!
+  paymentStatus: String!
+  taxRate: Float!
+}
+
 type CustomerModel {
   address: String!
   created_at: DateTime!
@@ -45,6 +58,21 @@ type Item {
   rate: Float!
 }
 
+input ItemDTO {
+  description: String!
+  quantity: Float!
+  rate: Float!
+}
+
+type Mutation {
+  createCustomer(address: String, email: String!, name: String!, phone: String): CustomerModel!
+  createInvoice(invoice: CreateInvoiceDTO!): InvoiceModel!
+}
+
 type Query {
+  customer(id: String!): CustomerModel!
+  customers: [CustomerModel!]!
   hello: String!
+  invoice(id: String!): InvoiceModel!
+  invoices: [InvoiceModel!]!
 }
