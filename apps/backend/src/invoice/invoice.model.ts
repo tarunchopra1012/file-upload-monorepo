@@ -7,7 +7,7 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { CustomerModel } from './customer.model';
+import { CustomerModel } from '../customer/customer.model';
 
 export enum Currency {
   USD = 'USD',

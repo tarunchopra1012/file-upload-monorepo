@@ -7,7 +7,7 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { InvoiceModel } from './invoice.model';
+import { InvoiceModel } from '../invoice/invoice.model';
 
 @ObjectType()
 @Entity()
