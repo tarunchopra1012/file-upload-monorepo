@@ -8,7 +8,6 @@ import { join } from 'path';
 import { AppResolver } from './app.resolver';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { CustomerModule } from './customer/customer.module';
-import DatabaseConfig from './config/database.config';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { CustomerModel } from './customer/customer.model';
 import { InvoiceModel } from './invoice/invoice.model';
@@ -17,8 +16,8 @@ import { InvoiceModule } from './invoice/invoice.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
-      isGlobal: true, // Ensures ConfigModule is available globally
-      envFilePath: '.env', // Explicitly specify the .env file
+      isGlobal: true,
+      envFilePath: '.env',
     }),
     UploadModule,
     GraphQLModule.forRoot<ApolloDriverConfig>({
@@ -33,13 +32,13 @@ import { InvoiceModule } from './invoice/invoice.module';
       useFactory: (configService: ConfigService) => ({
         type: 'postgres',
         host: configService.get<string>('DB_HOST'),
-        port: Number(configService.get<number>('DB_PORT')), // Ensure it's a number
+        port: Number(configService.get<number>('DB_PORT')),
         username: configService.get<string>('DB_USERNAME'),
-        password: String(configService.get<string>('DB_PASSWORD')), // Ensure it's a string
+        password: String(configService.get<string>('DB_PASSWORD')),
         database: configService.get<string>('DB_NAME'),
-        synchronize: true,
-        logging: true,
-        entities: [CustomerModel, InvoiceModel],
+        synchronize: false,
+        migrationsRun: true,
+        migrations: [join(__dirname, 'migrations', '*.{ts, js}')],
       }),
     }),
     CustomerModule,
