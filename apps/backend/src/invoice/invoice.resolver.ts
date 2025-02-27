@@ -1,4 +1,3 @@
-import { CustomerModel } from './../customer/customer.model';
 import { CustomerService } from './../customer/customer.service';
 import { InvoiceService } from './invoice.service';
 import {
@@ -10,8 +9,9 @@ import {
   Mutation,
 } from '@nestjs/graphql';
 import { Inject } from '@nestjs/common';
-import { InvoiceModel } from './invoice.model';
+import { InvoiceModel } from '../database/core/invoice.model';
 import { CreateInvoiceDTO } from './invoice.dto';
+import { CustomerModel } from '../database/core/customer.model';
 
 @Resolver((of) => InvoiceModel)
 export class InvoiceResolver {

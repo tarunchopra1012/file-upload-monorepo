@@ -9,8 +9,6 @@ import { AppResolver } from './app.resolver';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { CustomerModule } from './customer/customer.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { CustomerModel } from './customer/customer.model';
-import { InvoiceModel } from './invoice/invoice.model';
 import { InvoiceModule } from './invoice/invoice.module';
 
 @Module({
@@ -37,8 +35,8 @@ import { InvoiceModule } from './invoice/invoice.module';
         password: String(configService.get<string>('DB_PASSWORD')),
         database: configService.get<string>('DB_NAME'),
         synchronize: false,
-        migrationsRun: true,
-        migrations: [join(__dirname, 'migrations', '*.{ts, js}')],
+        entities: [__dirname + '/database/core/**/*.model{.ts,.js}'],
+        autoLoadEntities: true,
       }),
     }),
     CustomerModule,

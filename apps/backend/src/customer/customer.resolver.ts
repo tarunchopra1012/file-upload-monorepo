@@ -7,11 +7,11 @@ import {
   Resolver,
 } from '@nestjs/graphql';
 import { of } from 'rxjs';
-import { CustomerModel } from './customer.model';
 import { Inject } from '@nestjs/common';
 import { CustomerService } from './customer.service';
 import { InvoiceService } from '../invoice/invoice.service';
-import { InvoiceModel } from '../invoice/invoice.model';
+import { InvoiceModel } from '../database/core/invoice.model';
+import { CustomerModel } from '../database/core/customer.model';
 
 @Resolver((of) => CustomerModel)
 export class CustomerResolver {

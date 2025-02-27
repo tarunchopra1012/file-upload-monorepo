@@ -1,5 +1,5 @@
 import { CustomerService } from './../customer/customer.service';
-import { InvoiceModel } from './invoice.model';
+import { InvoiceModel } from '../database/core/invoice.model';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
